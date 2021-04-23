@@ -37,4 +37,10 @@ public class UserController {
 		return "UserRegister";
 	}
 	
+	//3. showLogin page
+	@GetMapping("/login")
+	public String showLogin() {
+		return "UserLogin";
+	}
+	
 }

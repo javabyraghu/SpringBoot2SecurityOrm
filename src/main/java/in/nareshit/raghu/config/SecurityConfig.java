@@ -33,17 +33,22 @@ public class SecurityConfig
 		
 		http.authorizeRequests()
 		.antMatchers("/user/register","/user/save","/home").permitAll()
+		.antMatchers("/user/login").permitAll()
 		.antMatchers("/emp").hasAuthority("EMPLOYEE")
 		.antMatchers("/admin").hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		
 		.and()
 		.formLogin()
-		.defaultSuccessUrl("/common",true)
+		.loginPage("/user/login") //to show login page
+		.loginProcessingUrl("/login") //todo login check
+		.defaultSuccessUrl("/common",true) //login success
+		.failureUrl("/user/login?error") //on login failed
 		
 		.and()
 		.logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //URL for Logout
+		.logoutSuccessUrl("/user/login?logout") // goto login page after logout
 		
 		.and()
 		.exceptionHandling()
