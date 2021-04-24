@@ -1,6 +1,9 @@
-<html>
+<html xmlns:th="https://www.thymeleaf.org/">
 <body>
-<h3>WELCOME TO COMMON PAGE!!</h3>
+<h3>WELCOME TO COMMON PAGE!! <span th:text="${currentUser}"></span></h3>
+
+User: <span th:text="${session.fullUser}"></span> <br/>
+Display Name : <span th:text="${session.fullUser.usrName}"></span>
 <a href="logout">LOGOUT</a>
 </body>
 </html>

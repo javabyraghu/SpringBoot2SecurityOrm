@@ -36,6 +36,11 @@ public class UserServiceImpl
 		return user.getUsrId();
 	}
 	
+	@Override
+	public Optional<User> findByEmai(String email) {
+		return repo.findByUsrMail(email);
+	}
+	
 	//-----------------------------------//
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException 
